@@ -1,0 +1,5 @@
+com\mycompany\heranca\conta\corrente\App.class
+com\mycompany\heranca\conta\corrente\Transacao.class
+com\mycompany\heranca\conta\corrente\Deposito.class
+com\mycompany\heranca\conta\corrente\ContaCorrente.class
+com\mycompany\heranca\conta\corrente\Saque.class

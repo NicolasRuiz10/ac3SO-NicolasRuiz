@@ -11,7 +11,7 @@ abrir_software() {
 
     if [ \"$abrir\" == \"sim\" ]; 
     then
-        cd /home/$USER/Desktop/Quality-System/jar/jarProjeto
+        cd /home/$USER/Desktop/Quality-System/ac3SO-NicolasRuiz/jarProjeto
 
         sleep 1
         echo "$(tput setaf 10)[Manivela]:$(tput setaf 7) Abrindo nossa aplicação"
@@ -31,7 +31,7 @@ instalar_aplicacao() {
             mkdir /home/$USER/Desktop/Quality-System
             cd /home/$USER/Desktop/Quality-System
 
-            git clone https://github.com/Ogabrielmonteiro/jar.git
+            git clone https://github.com/NicolasRuiz10/ac3SO-NicolasRuiz.git
 
             sleep 1
 
