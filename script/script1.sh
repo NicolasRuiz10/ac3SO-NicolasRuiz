@@ -11,7 +11,7 @@ abrir_software() {
 
     if [ \"$abrir\" == \"sim\" ]; 
     then
-        cd /home/$USER/Desktop/Quality-System/ac3SO-NicolasRuiz/jarProjeto
+        cd /home/$USER/Desktop/Quality-System/jar/jarProjeto
 
         sleep 1
         echo "$(tput setaf 10)[Manivela]:$(tput setaf 7) Abrindo nossa aplicação"
@@ -31,7 +31,7 @@ instalar_aplicacao() {
             mkdir /home/$USER/Desktop/Quality-System
             cd /home/$USER/Desktop/Quality-System
 
-            git clone https://github.com/NicolasRuiz10/ac3SO-NicolasRuiz.git
+            git clone https://github.com/Ogabrielmonteiro/jar.git
 
             sleep 1
 
@@ -56,7 +56,7 @@ instalar_java() {
 
         echo "$(tput setaf 10)[Manivela]:$(tput setaf 7) Instalando... quase lá!"
 
-        sudo apt update -y && sudo apt upgrade -y
+        sudo apt update -y
 
         echo "$(tput setaf 10)[Manivela]:$(tput setaf 7) Instalando Java..."
         sleep 1
