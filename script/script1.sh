@@ -12,7 +12,7 @@ instalar_docker() {
     if [ $? -eq 0 ]
     then
         echo "$(tput setaf 10)[Manivela]:$(tput setaf 7) Você já possui o docker instalado!"
-        sudo docker start ProjetoPI
+        sudo docker start ConteinerSO2
 
         verificar_java
         
