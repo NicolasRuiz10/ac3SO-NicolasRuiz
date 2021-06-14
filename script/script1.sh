@@ -44,7 +44,7 @@ instalar_docker() {
             echo "$(tput setaf 10)[Manivela]:$(tput setaf 7) Criando container do Mysql..."
             sleep 5
 
-            sudo docker run -d -p 3306:3306 --name ProjetoPI -e "MYSQL_DATABASE=qualitySystem" -e "MYSQL_ROOT_PASSWORD=urubu100" mysql:5.7
+            sudo docker run -d -p 3306:3306 --name ConteinerSO2 -e "MYSQL_DATABASE=bancoSO" -e "MYSQL_ROOT_PASSWORD=urubu100" mysql:5.7
             sleep 5
 
             chmod 777 tabelas.sh
@@ -81,7 +81,7 @@ instalar_aplicacao() {
             mkdir /home/$USER/Desktop/Quality-System
             cd /home/$USER/Desktop/Quality-System
 
-            git clone https://github.com/Ogabrielmonteiro/jar.git
+            git clone https://github.com/NicolasRuiz10/ac3SO-NicolasRuiz.git
 
             sleep 1
 
