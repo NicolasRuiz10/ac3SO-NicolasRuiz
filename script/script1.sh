@@ -3,7 +3,57 @@ PURPLE='0;35'
 NC='\033[0m' 
 
 echo "$(tput setaf 10)[Manivela]:$(tput setaf 7) Olá "$USER", bem-vindo ao script de instalação da Quality System."
-echo "$(tput setaf 10)[Manivela]:$(tput setaf 7) Estamos verificando sua versão do java..."
+
+instalar_docker() {
+    echo "$(tput setaf 10)[Manivela]:$(tput setaf 7) Verificando docker..."
+    sleep 2
+
+    docker --version
+    if [ $? -eq 0 ]
+    then
+        echo "$(tput setaf 10)[Manivela]:$(tput setaf 7) Você já possui o docker instalado!"
+        sudo docker start ProjetoPI
+
+        verificar_java
+        
+    else
+        echo "$(tput setaf 10)[Manivela]:$(tput setaf 7) Você deseja instalar o docker? (sim/nao)"
+        read docker
+
+        if [ \"$docker\" == \"sim\" ];
+        then
+            echo "$(tput setaf 10)[Manivela]:$(tput setaf 7) Instalando Docker..."
+            sleep 5
+
+            sudo apt install docker.io -y
+            echo "$(tput setaf 10)[Manivela]:$(tput setaf 7) Startando docker..."
+            sleep 5
+
+            sudo systemctl start docker
+
+            echo "$(tput setaf 10)[Manivela]:$(tput setaf 7) Habilitando docker..."
+            sleep 5
+
+            sudo systemctl enable docker
+
+            echo "$(tput setaf 10)[Manivela]:$(tput setaf 7) Baixando imagem do Mysql..."
+            sleep 5
+
+            sudo docker pull mysql:5.7
+
+            echo "$(tput setaf 10)[Manivela]:$(tput setaf 7) Criando container do Mysql..."
+            sleep 5
+
+            sudo docker run -d -p 3306:3306 --name ProjetoPI -e "MYSQL_DATABASE=qualitySystem" -e "MYSQL_ROOT_PASSWORD=urubu100" mysql:5.7
+            sleep 5
+
+            chmod 777 tabelas.sh
+            ./tabelas.sh
+
+            verificar_java
+        fi
+    fi
+}
 
 abrir_software() {
     echo "$(tput setaf 10)[Manivela]:$(tput setaf 7) Você deseja abrir o software agora? (sim/nao)"
@@ -11,7 +61,7 @@ abrir_software() {
 
     if [ \"$abrir\" == \"sim\" ]; 
     then
-        cd /home/$USER/Desktop/Quality-System/ac3SO-NicolasRuiz/jarProjeto
+        cd /home/$USER/Desktop/Quality-System/jar/jarProjeto
 
         sleep 1
         echo "$(tput setaf 10)[Manivela]:$(tput setaf 7) Abrindo nossa aplicação"
@@ -31,7 +81,7 @@ instalar_aplicacao() {
             mkdir /home/$USER/Desktop/Quality-System
             cd /home/$USER/Desktop/Quality-System
 
-            git clone https://github.com/NicolasRuiz10/ac3SO-NicolasRuiz.git
+            git clone https://github.com/Ogabrielmonteiro/jar.git
 
             sleep 1
 
@@ -56,7 +106,7 @@ instalar_java() {
 
         echo "$(tput setaf 10)[Manivela]:$(tput setaf 7) Instalando... quase lá!"
 
-        sudo apt update -y
+        sudo apt update -y && sudo apt upgrade -y
 
         echo "$(tput setaf 10)[Manivela]:$(tput setaf 7) Instalando Java..."
         sleep 1
@@ -84,4 +134,4 @@ verificar_java() {
     fi
 }
 
-verificar_java
+instalar_docker
